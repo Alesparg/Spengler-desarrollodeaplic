@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View} from 'react-native'
 import { colors } from '../Global/colors'
 
-const Header = ({title = "Mira nuestros Productos"}) => {
+const Header = ({title = "Producto"}) => {
 
   return (
     <View style={styles.container}>
@@ -14,7 +14,7 @@ export default Header
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:colors.green1,
+        backgroundColor:colors.color1,
         width:"100%",
         height:80,
         justifyContent:"center",

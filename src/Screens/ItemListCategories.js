@@ -1,13 +1,13 @@
-import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
-import Header from '../Components/Header'
-import Search from '../Components/Search'
+import { Button, FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import Search from '../components/Search'
 import allProducts from "../Data/products.json"
-import ProductItem from '../Components/ProductItem'
+import ProductItem from '../components/ProductItem'
 import { useEffect, useState } from 'react'
+import { colors } from '../Global/colors'
 
 
-const ItemListCategories = ({category}) => {
-
+const ItemListCategories = ({navigation,route}) => {
+  const {category} = route.params
   const [keyword,setKeyword] = useState("")
   const [products,setProducts] = useState(allProducts)
 
@@ -27,13 +27,19 @@ const ItemListCategories = ({category}) => {
 
   return (
     <>
-      <Header/>
       <Search setKeyword={setKeyword}/>
+      <Pressable
+        style={styles.goBack}
+        title='Go back'
+        onPress={() => navigation.goBack()} 
+      >
+        <Text style={styles.volver}>Volver</Text>
+      </Pressable>
       <FlatList
         style={styles.container}
         data={products}
         keyExtractor={item => item.id}
-        renderItem={({item})=> <ProductItem item={item}/>}
+        renderItem={({item})=> <ProductItem item={item} navigation={navigation} route={route} />}
       />
     </>
   )
@@ -44,5 +50,14 @@ export default ItemListCategories
 const styles = StyleSheet.create({
  container:{
   width:"100%"
+ },
+ volver:{
+marginLeft:155,
+ },
+ goBack:{
+  width:"100%",
+  backgroundColor:colors.color2,
+  padding:10,
+  paddingStart:40
  }
 })

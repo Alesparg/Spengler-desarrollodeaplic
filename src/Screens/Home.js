@@ -1,13 +1,11 @@
 import { StyleSheet } from 'react-native'
-import Header from '../Components/Header'
-import Categories from '../Components/Categories'
+import Categories from '../components/Categories'
 
-const Home = ({setCategorySelected}) => {
+const Home = ({navigation,route}) => {
   
   return (
         <>
-            <Header title='Bienvenido a un poco de todo' />
-            <Categories setCategorySelected={setCategorySelected}/>
+            <Categories navigation={navigation} route={route}/>
         </>
   )
 }

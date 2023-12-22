@@ -1,20 +1,14 @@
-import { StyleSheet, Text, View , Image, Pressable,useWindowDimensions, TextInput } from 'react-native'
+import { StyleSheet, Text, View , Image, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import allProduct from "../Data/products.json"
 import { colors } from '../Global/colors'
+import { useSelector } from 'react-redux'
 
 const ItemDetail = ({route}) => {
-  const {id} = route.params
 
-  const [product,setProduct] = useState({})
+  const product = useSelector((state)=> state.shop.value.productSelected)
   const images = product.images ? product.images : []
 
-  useEffect(()=>{
 
-    const productFinded = allProduct.find(product => product.id === id)
-    setProduct(productFinded)
-
-  },[id])
 
   return (
     <View style={styles.container}>
@@ -29,9 +23,9 @@ const ItemDetail = ({route}) => {
             <Text style={styles.description}>{product.description}</Text>
           </View>
           <View style={styles.containerPrice}>
-            <Text style={styles.price}>Precio $ {product.price}</Text>
+            <Text style={styles.price}>Precio$ {product.price}</Text>
             <Pressable style={styles.buyNow}>
-              <Text style={styles.buyNowText}>Comprar YA</Text>
+              <Text style={styles.buyNowText}>Compra Ya</Text>
             </Pressable>
           </View>
         </View>
@@ -80,9 +74,13 @@ const styles = StyleSheet.create({
       borderBottomEndRadius: 2,
       fontWeight:"bold"
      },
+     description:{
+      fontSize:20,
+      textAlign: "center",
+      backgroundColor:colors.color4,
+     },
      price:{
-      fontSize:25,
-      
+      fontSize:30
      },
      buyNow:{
       backgroundColor:colors.color1,
@@ -90,13 +88,7 @@ const styles = StyleSheet.create({
       paddingHorizontal:10,
       borderRadius:5
      },
-     description:{
-      fontSize:20,
-      textAlign: "center",
-      backgroundColor:colors.color4,
-     },
      buyNowText:{
-      color:"white",
-      width: 100,
+      color:"white"
      }
 })

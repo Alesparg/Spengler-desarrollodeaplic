@@ -13,9 +13,9 @@ export default CardShadow
 
 const styles = StyleSheet.create({
     container:{
-                /* ANDROID */
+                
                 elevation:10,
-                /*IOS */
+                
                 shadowColor:"black",
                 shadowOffset:{width:3,height:5},
                 shadowRadius:1,

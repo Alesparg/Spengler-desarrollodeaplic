@@ -14,7 +14,7 @@ const ShopStack = () => {
             ({route})=>{
                 return {
                     header : () => <Header title={
-                                        route.name === "Home" ? "Un poco de todo" :
+                                        route.name === "Home" ? "Categorias" :
                                         route.name === "Category" ? route.params.category :
                                         "Detalle"
                     }               />

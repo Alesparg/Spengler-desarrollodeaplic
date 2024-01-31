@@ -1,41 +1,47 @@
-import { StyleSheet, Text, View , Image, Pressable } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, View, Image, Pressable, Alert } from 'react-native'
+import React from 'react'
 import { colors } from '../Global/colors'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { addItem } from '../features/cart/cartSlice'
 
-const ItemDetail = ({route}) => {
+const ItemDetail = ({ navigation, route }) => {
   const dispatch = useDispatch()
-  const product = useSelector((state)=> state.shop.value.productSelected)
+  const product = useSelector((state) => state.shop.value.productSelected)
   const images = product.images ? product.images : []
 
-
+  const addCartProduct = () => {
+    dispatch(addItem(product));  
+    Alert.alert("Su compra se añadio con exito al carrito"); //ESTO ES LO QUE QUIERO REPLICAR
+    navigation.navigate("CartStack");
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.content} >
-          <Image
-            style={styles.image}
-            source={{uri:images[2]}}
-            resizeMode='cover'
-          />
-          <View style={styles.containerText}>
-            <Text style={styles.title}>{product.title}</Text>
-            <Text>{product.description}</Text>
-          </View>
-          <View style={styles.containerPrice}>
-            <Text style={styles.price}>$ {product.price}</Text>
-            <Pressable style={styles.buyNow} onPress={()=> dispatch(addItem(product)) }>
-              <Text style={styles.buyNowText}>Carrito</Text>
-            </Pressable>
-          </View>
+        <Image
+          style={styles.image}
+          source={{uri:images[0]}}
+          resizeMode='cover'
+        />
+        <View style={styles.containerText}>
+          <Text style={styles.title}>{product.title}</Text>
+          <Text>{product.description}</Text>
         </View>
+        <View style={styles.containerPrice}>
+          <Text style={styles.price}>$ {product.price}</Text>
+          <Pressable style={styles.buyNow} onPress={addCartProduct}>
+            <Text style={styles.buyNowText}>Carrito</Text>
+          </Pressable>
+        </View>
+      </View>
     </View>
   )
 }
 
 export default ItemDetail
+
+
+
 
 const styles = StyleSheet.create({
     container:{

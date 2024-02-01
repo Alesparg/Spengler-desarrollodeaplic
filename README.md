@@ -89,7 +89,7 @@ RTK Query y Firebase: Realiza operaciones de lectura/escritura en la base de dat
 
 
 ## Instalación
-Clona el repositorio: git clone https://github.com/tu-usuario/tu-aplicacion.git
+Clona el repositorio: git clone https://github.com/Alesparg/Spengler-desarrollodeaplic
 Instala las dependencias: npm install
 Configura las claves de API para servicios externos (Expo-Location, Firebase, etc.).
 Configura las credenciales de Firebase en tu proyecto.

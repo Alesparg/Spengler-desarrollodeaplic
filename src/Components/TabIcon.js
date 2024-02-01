@@ -12,6 +12,10 @@ const TabIcon = ({icon,label,focused}) => {
 
 export default TabIcon
 
+
+
+
+
 const styles = StyleSheet.create({
     container:{
         alignItems:"center"

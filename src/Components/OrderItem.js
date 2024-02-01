@@ -16,6 +16,7 @@ const OrderItem = ({order}) => {
   )
 }
 
+
 export default OrderItem
 
 const styles = StyleSheet.create({

@@ -23,6 +23,8 @@ const Header = ({title = "Producto"}) => {
   )
 }
 
+
+
 export default Header
 
 const styles = StyleSheet.create({

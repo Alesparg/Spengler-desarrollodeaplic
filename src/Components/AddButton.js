@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
         paddingVertical:8,
         margin:10
     },
+
+
+    
     text:{
         color:"white",
         textAlign:"center",

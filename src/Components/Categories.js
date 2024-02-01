@@ -18,6 +18,8 @@ const Categories = ({navigation,route}) => {
 
 export default Categories
 
+
+
 const styles = StyleSheet.create({
     container:{
         width:"100%",

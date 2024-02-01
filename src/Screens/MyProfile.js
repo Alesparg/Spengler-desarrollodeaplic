@@ -1,29 +1,39 @@
-import { StyleSheet, View,Image,Text } from 'react-native'
-import AddButton from '../Components/AddButton'
-import { useGetProfileImageQuery, useGetUserLocationQuery } from '../app/services/shopServices'
-import { useSelector } from 'react-redux'
+import { StyleSheet, View, Image, Text } from 'react-native';
+import AddButton from '../Components/AddButton';
+import { useGetProfileImageQuery, useGetUserLocationQuery } from '../app/services/shopServices';
+import { useSelector } from 'react-redux';
 
-const MyProfile = ({navigation}) => {
-    const localId = useSelector(state => state.auth.value.localId)
-    const {data} = useGetProfileImageQuery(localId)
-    const {data:location} = useGetUserLocationQuery(localId)
+const MyProfile = ({ navigation }) => {
+  const localId = useSelector(state => state.auth.value.localId);
+  const { data, error } = useGetProfileImageQuery(localId);
+  const { data: location } = useGetUserLocationQuery(localId);
+
+  // Manejar posibles errores en la consulta useGetProfileImageQuery
+  if (error) {
+    console.error("Error fetching profile image:", error);
+    // Puedes manejar el error de acuerdo a tus necesidades
+  }
 
   return (
     <View style={styles.container}>
-        <Image
-            source={data ? {uri:data.image} : require("../../assets/user.png")}
-            style={styles.image}
-            resizeMode='cover'
-        />
-        <Text>{location?.address}</Text>
-        <AddButton title={"Agregar foto"} onPress={()=> navigation.navigate("ImageSelector")}/>
-      
+      <Image
+        source={data ? { uri: data.image } : require("../../assets/user.png")}
+        style={styles.image}
+        resizeMode='cover'
+      />
+      <Text>{location?.address}</Text>
+      <AddButton title={"Agregar foto"} onPress={() => navigation.navigate("ImageSelector")} />
     </View>
-  )
-}
+  );
+};
 
 
-export default MyProfile
+
+export default MyProfile;
+
+
+
+
 
 
 const styles = StyleSheet.create({

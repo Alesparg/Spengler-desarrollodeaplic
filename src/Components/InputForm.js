@@ -34,6 +34,8 @@ const styles = StyleSheet.create({
         marginHorizontal:"5%",
         marginVertical:10
       },
+
+      
       titleInput:{
         width:"90%",
         marginHorizontal:"5%",

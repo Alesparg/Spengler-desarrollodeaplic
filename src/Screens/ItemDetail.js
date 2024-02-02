@@ -11,7 +11,7 @@ const ItemDetail = ({ navigation, route }) => {
 
   const addCartProduct = () => {
     dispatch(addItem(product));  
-    Alert.alert("Su compra se añadio con exito al carrito"); //ESTO ES LO QUE QUIERO REPLICAR
+    Alert.alert("Su compra se añadio con exito al carrito"); 
     navigation.navigate("CartStack");
   };
 

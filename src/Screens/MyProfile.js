@@ -8,10 +8,10 @@ const MyProfile = ({ navigation }) => {
   const { data, error } = useGetProfileImageQuery(localId);
   const { data: location } = useGetUserLocationQuery(localId);
 
-  // Manejar posibles errores en la consulta useGetProfileImageQuery
+  
   if (error) {
     console.error("Error fetching profile image:", error);
-    // Puedes manejar el error de acuerdo a tus necesidades
+    
   }
 
   return (

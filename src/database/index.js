@@ -4,15 +4,13 @@ import * as SQLite from 'expo-sqlite';
 let db;
 
 if (Platform.OS === 'web') {
-  // Implementar una solución para web, por ejemplo, usar IndexedDB
-  // Aquí, podrías utilizar una biblioteca como "localforage" para simplificar el uso de IndexedDB
-  // npm install localforage
+  
   const localforage = require('localforage');
   db = localforage.createInstance({
     name: 'session',
   });
 } else {
-  // Utilizar expo-sqlite en entornos nativos de Expo
+ 
   db = SQLite.openDatabase('session.db');
 }
 
